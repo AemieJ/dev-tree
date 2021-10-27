@@ -1,4 +1,9 @@
-const { updateUser, forgotPass, isValidURL, resetPass } = require('../services/index')
+const { updateUser, forgotPass, isValidURL, resetPass, fetchDetails } = require('../services/index')
+
+const fetch = async ({ email }) => {
+  const value = await fetchDetails(email)
+  return value.msg
+}
 
 const update = async ({ email, body, accessToken }) => {
   const value = await updateUser(email, body, accessToken)
@@ -24,5 +29,6 @@ module.exports = {
   update,
   forgotPassword,
   isValidPassURL,
-  resetPassword
+  resetPassword,
+  fetch
 }

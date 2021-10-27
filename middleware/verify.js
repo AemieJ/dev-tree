@@ -7,7 +7,7 @@ const verification = async (accessToken) => {
   const currentTimeSinceEpoch = Math.floor(new Date().getTime() / 1000)
 
   const token = accessToken
-  if (token === "" || !token) throw new Error(errorName.INVALID_DENIED)
+  if (token === '' || !token) throw new Error(errorName.INVALID_DENIED)
   const check = jwt.decode(token)
   if (!check) throw new Error(errorName.INVALID_DENIED)
 

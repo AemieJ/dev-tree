@@ -1,4 +1,4 @@
-const { User } = require('../models/index')
+const { User } = require('../../models/index')
 const createToken = require('./createToken.service')
 
 const updateUserOnLogin = async (status, msg) => {

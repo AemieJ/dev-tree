@@ -1,8 +1,9 @@
 const { register, login } = require('./auth.controller')
-const { update, forgotPassword, isValidPassURL, resetPassword } = require('./profile.controller')
-const { registerID } = require('./id.controller')
+const { update, forgotPassword, isValidPassURL, resetPassword, fetch } = require('./profile.controller')
+const { registerID, fetchPersonalID } = require('./id.controller')
 
 const resolver = {
+  user: fetch,
   registerUser: register,
   loginUser: login,
   updateUserInfo: update,
@@ -10,7 +11,8 @@ const resolver = {
   isCorrectResetURL: isValidPassURL,
   resetPass: resetPassword,
   insertPersonalID: registerID,
-  greeter: ({ name }) => { return `Hello ${name}` }
+  personal: fetchPersonalID,
+  greeter: ({ name }) => { return `Hello, ${name}.` }
 }
 
 module.exports = resolver

@@ -13,6 +13,11 @@ type Inputs {
     youtube: Obj!
 },
 
+type FetchPersonal {
+    email: String!
+    id: Inputs!
+}
+
 type Personal {
     email: String!
     id: Inputs!

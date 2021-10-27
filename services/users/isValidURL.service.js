@@ -1,8 +1,8 @@
 require('dotenv').config()
 
-const { errorName } = require('../errors/constants')
+const { errorName } = require('../../errors/constants')
 
-const { User } = require('../models/index')
+const { User } = require('../../models/index')
 
 const isValidURL = async (email, token) => {
   const user = await User.findOne({ email })

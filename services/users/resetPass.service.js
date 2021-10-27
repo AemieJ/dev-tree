@@ -1,9 +1,9 @@
 require('dotenv').config()
 
 const bcrypt = require('bcrypt')
-const { errorName } = require('../errors/constants')
+const { errorName } = require('../../errors/constants')
 
-const { User } = require('../models/index')
+const { User } = require('../../models/index')
 
 const resetPass = async (email, pass, rePass) => {
   const user = await User.findOne({ email })

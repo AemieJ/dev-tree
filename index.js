@@ -6,8 +6,7 @@ const { schema } = require('./schema/index')
 const getErrorCode = require('./errors/getCode')
 // const { register, login, update, forgotPassword, isValidPassURL,
 // resetPassword, registerID } = require("./resolvers/index")
-const resolver = require("./resolvers/index")
-
+const resolver = require('./resolvers/index')
 
 const app = express()
 const PORT = 4000 || process.env.PORT
@@ -30,7 +29,7 @@ app.use('/graphql', expressGraphQL({
 }))
 
 app.get('/', (req, res) => {
-  res.status(200).json({msg: "Hey there"})
+  res.status(200).json({ msg: 'Hey there' })
 })
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

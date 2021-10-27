@@ -1,10 +1,10 @@
 require('dotenv').config()
 
-const { errorName } = require('../errors/constants')
-const verification = require('../middleware/verify')
+const { errorName } = require('../../errors/constants')
+const verification = require('../../middleware/verify')
 
-const { User } = require('../models/index')
-const { updateValidation } = require('../validations/index')
+const { User } = require('../../models/index')
+const { updateValidation } = require('../../validations/index')
 
 const updateUser = async (email, req, accessToken) => {
   const { error } = updateValidation(req)

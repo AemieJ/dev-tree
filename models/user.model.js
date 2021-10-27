@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     max: 256
   },
   gender: {
-    type: String, 
+    type: String,
     required: true
   },
   profile: {

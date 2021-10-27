@@ -1,21 +1,26 @@
-const createUser = require('./createUser.service')
-const createToken = require('./createToken.service')
-const fetchUser = require('./fetchUser.service')
-const updateUserOnLogin = require('./updateUserOnLogin.service')
-const updateUser = require('./updateUser.service')
-const forgotPass = require('./forgotPass.service')
-const isValidURL = require('./isValidURL.service')
-const resetPass = require('./resetPass.service')
-const createID = require("./tree/createID.service")
+const createUser = require('./users/createUser.service')
+const createToken = require('./users/createToken.service')
+const fetchUser = require('./users/fetchUser.service')
+const updateUserOnLogin = require('./users/updateUserOnLogin.service')
+const updateUser = require('./users/updateUser.service')
+const forgotPass = require('./users/forgotPass.service')
+const isValidURL = require('./users/isValidURL.service')
+const resetPass = require('./users/resetPass.service')
+const fetchDetails = require('./users/fetchDetails.service')
+
+const createID = require('./tree/createID.service')
+const fetchID = require('./tree/fetchID.service')
 
 module.exports = {
   createUser,
   createToken,
   fetchUser,
+  fetchDetails,
   updateUser,
   updateUserOnLogin,
   forgotPass,
   isValidURL,
   resetPass,
-  createID
+  createID,
+  fetchID
 }

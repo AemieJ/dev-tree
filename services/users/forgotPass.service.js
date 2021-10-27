@@ -1,9 +1,9 @@
 require('dotenv').config()
 
-const { errorName } = require('../errors/constants')
-const { sendMailForPass } = require('../middleware')
+const { errorName } = require('../../errors/constants')
+const { sendMailForPass } = require('../../middleware')
 
-const { User } = require('../models/index')
+const { User } = require('../../models/index')
 
 const forgotPass = async (email) => {
   const user = await User.findOne({ email })

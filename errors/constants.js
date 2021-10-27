@@ -2,6 +2,7 @@ exports.errorName = {
   VALIDATION_ERROR: 'VALIDATION_ERROR',
   USER_ALREADY_EXISTS: 'USER_ALREADY_EXISTS',
   ID_ALREADY_EXISTS: 'ID_ALREADY_EXISTS',
+  ID_NOT_EXISTS: 'ID_NOT_EXISTS',
   USER_NOT_EXISTS: 'USER_NOT_EXISTS',
   USER_INCORRECT_PASS: 'USER_INCORRECT_PASS',
   INVALID_TOKEN: 'INVALID_TOKEN',
@@ -24,6 +25,10 @@ exports.errorType = {
   USER_ALREADY_EXISTS: {
     message: 'User already exists. Login with the credentials',
     statusCode: 403
+  },
+  ID_NOT_EXISTS: {
+    message: 'User doesn\'t have any associated ID',
+    statusCode: 404
   },
   USER_NOT_EXISTS: {
     message: 'Invalid Email',

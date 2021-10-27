@@ -1,10 +1,10 @@
 require('dotenv').config()
 
 const bcrypt = require('bcrypt')
-const { errorName } = require('../errors/constants')
+const { errorName } = require('../../errors/constants')
 
-const { User } = require('../models/index')
-const { loginValidation } = require('../validations/index')
+const { User } = require('../../models/index')
+const { loginValidation } = require('../../validations/index')
 
 const fetchUser = async (req) => {
   const { email, password } = req

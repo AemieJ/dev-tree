@@ -3,18 +3,16 @@ require('dotenv').config()
 const { errorName } = require('../../errors/constants')
 const { verification } = require('../../middleware/index')
 
-const { Personal, User } = require('../../models/index')
+const { Personal } = require('../../models/index')
 const { treeValidation } = require('../../validations/index')
 
 const createID = async (email, req, accessToken) => {
-  console.log(req)
   const { error } = treeValidation(req)
   if (error) throw new Error(errorName.VALIDATION_ERROR)
 
   const value = await verification(accessToken)
   const token = value.token
   if (token === '') {
-    console.log(email)
     const checkUserExists = await Personal.findOne({ email })
     if (checkUserExists) throw new Error(errorName.ID_ALREADY_EXISTS)
 
@@ -24,9 +22,9 @@ const createID = async (email, req, accessToken) => {
     })
 
     try {
-        await personal.save();
+      await personal.save()
     } catch (err) {
-        throw new Error(errorName.SERVER_ERROR)
+      throw new Error(errorName.SERVER_ERROR)
     }
 
     return {
