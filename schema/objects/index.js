@@ -1,9 +1,9 @@
-const userObj = require('./user')
-const personalObj = require('./personal')
+import userObj from './user.js';
+import personalObj from './personal.js';
 
 const object = `
 ${userObj}
 ${personalObj}
 `
 
-module.exports = object
+export default object;

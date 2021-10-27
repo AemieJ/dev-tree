@@ -1,11 +1,11 @@
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config()
 
-const { errorName } = require('../../errors/constants')
-
-const { Personal } = require('../../models/index')
+import { errorName } from '../../errors/constants.js';
+import models from '../../models/index.js';
 
 const fetchID = async (email) => {
-  const personal = await Personal.findOne({ email })
+  const personal = await models.Personal.findOne({ email })
   if (!personal) throw new Error(errorName.ID_NOT_EXIST)
 
   const yt = personal.youtube
@@ -21,4 +21,4 @@ const fetchID = async (email) => {
   }
 }
 
-module.exports = fetchID
+export default fetchID;

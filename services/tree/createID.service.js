@@ -1,22 +1,22 @@
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config()
 
-const { errorName } = require('../../errors/constants')
-const { verification } = require('../../middleware/index')
-
-const { Personal } = require('../../models/index')
-const { treeValidation } = require('../../validations/index')
+import { errorName } from '../../errors/constants.js';
+import middle from '../../middleware/index.js';
+import models from '../../models/index.js';
+import validation from '../../validations/index.js';
 
 const createID = async (email, req, accessToken) => {
-  const { error } = treeValidation(req)
+  const { error } = validation.treeValidation(req)
   if (error) throw new Error(errorName.VALIDATION_ERROR)
 
-  const value = await verification(accessToken)
+  const value = await middle.verification(accessToken)
   const token = value.token
   if (token === '') {
-    const checkUserExists = await Personal.findOne({ email })
+    const checkUserExists = await models.Personal.findOne({ email })
     if (checkUserExists) throw new Error(errorName.ID_ALREADY_EXISTS)
 
-    const personal = new Personal({
+    const personal = new models.Personal({
       email: email,
       youtube: req.youtube
     })
@@ -45,4 +45,4 @@ const createID = async (email, req, accessToken) => {
   }
 }
 
-module.exports = createID
+export default createID;

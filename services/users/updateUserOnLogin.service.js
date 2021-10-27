@@ -1,5 +1,5 @@
-const { User } = require('../../models/index')
-const createToken = require('./createToken.service')
+import models from '../../models/index.js';
+import createToken from './createToken.service.js';
 
 const updateUserOnLogin = async (status, msg) => {
   if (status === 200) {
@@ -7,7 +7,7 @@ const updateUserOnLogin = async (status, msg) => {
     const refreshToken = token.refreshToken.token
 
     try {
-      await User.findOneAndUpdate({ email: msg.email }, { refreshToken }, {
+      await models.User.findOneAndUpdate({ email: msg.email }, { refreshToken }, {
         new: true,
         useFindAndModify: false
       })
@@ -35,4 +35,4 @@ const updateUserOnLogin = async (status, msg) => {
   }
 }
 
-module.exports = updateUserOnLogin
+export default updateUserOnLogin;

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 
 const miscIDSchema = new mongoose.Schema({
   /*
@@ -30,4 +30,4 @@ const miscIDSchema = new mongoose.Schema({
   }]
 })
 
-module.exports = mongoose.model('miscID', miscIDSchema)
+export default mongoose.model('miscID', miscIDSchema);

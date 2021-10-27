@@ -49,4 +49,4 @@ type User {
     profile: String!
 },`
 
-module.exports = userObj
+export default userObj;

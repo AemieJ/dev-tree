@@ -1,14 +1,13 @@
 // const userSchema = require("./user");
-const query = require('./query/index')
-const mutation = require('./mutation/index')
-const object = require('./objects/index')
+import query from './query/index.js';
+import mutation from './mutation/index.js';
+import object from './objects/index.js';
 
 const schemaStr = `${object}
 ${query}
 ${mutation}`
 
-const { buildSchema } = require('graphql')
+import { buildSchema } from 'graphql';
 const schema = buildSchema(schemaStr)
-module.exports = {
-  schema
-}
+
+export default schema;

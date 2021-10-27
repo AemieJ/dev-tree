@@ -1,5 +1,6 @@
-require('dotenv').config()
-const jwt = require('jsonwebtoken')
+import dotenv from 'dotenv';
+dotenv.config()
+import jwt from 'jsonwebtoken';
 
 const createToken = (user) => {
   const currentDate = new Date()
@@ -19,4 +20,4 @@ const createToken = (user) => {
   return token
 }
 
-module.exports = createToken
+export default createToken;

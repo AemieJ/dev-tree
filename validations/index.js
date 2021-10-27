@@ -1,10 +1,12 @@
-const { registerValidation, loginValidation } = require('./auth.validation')
-const { updateValidation } = require('./profile.validation')
-const { treeValidation } = require('./tree.validation')
+import { registerValidation, loginValidation }from './auth.validation.js';
+import { updateValidation } from './profile.validation.js';
+import { treeValidation } from './tree.validation.js';
 
-module.exports = {
+let validation = {
   registerValidation,
   loginValidation,
   updateValidation,
   treeValidation
 }
+
+export default validation;

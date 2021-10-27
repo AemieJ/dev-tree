@@ -1,20 +1,15 @@
-const { createUser, fetchUser, updateUserOnLogin } = require('../services/index')
+import service from '../services/index.js';
 
-const register = async (req) => {
-  const value = await createUser(req.body)
+export const register = async (req) => {
+  const value = await service.createUser(req.body)
   return value.msg
 }
 
-const login = async (req) => {
-  const { status, msg } = await fetchUser(req.body)
-  const response = await updateUserOnLogin(status, msg)
+export const login = async (req) => {
+  const { status, msg } = await service.fetchUser(req.body)
+  const response = await service.updateUserOnLogin(status, msg)
   if (response.status === 200) {
     return response.msg
   }
   return response.msg
-}
-
-module.exports = {
-  register,
-  login
 }

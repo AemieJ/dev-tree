@@ -1,7 +1,9 @@
-const User = require('./user.model')
-const Personal = require('./personal.model')
+import User from './user.model.js';
+import Personal from './personal.model.js';
 
-module.exports = {
-  User,
+let models = {
+  User, 
   Personal
 }
+
+export default models;

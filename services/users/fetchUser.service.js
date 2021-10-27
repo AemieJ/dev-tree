@@ -1,19 +1,19 @@
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config()
 
-const bcrypt = require('bcrypt')
-const { errorName } = require('../../errors/constants')
-
-const { User } = require('../../models/index')
-const { loginValidation } = require('../../validations/index')
+import bcrypt from 'bcrypt';
+import { errorName } from '../../errors/constants.js';
+import models from '../../models/index.js';
+import validation from '../../validations/index.js';
 
 const fetchUser = async (req) => {
   const { email, password } = req
 
-  const { error } = loginValidation(req)
+  const { error } = validation.loginValidation(req)
 
   if (error) throw new Error(errorName.VALIDATION_ERROR)
 
-  const user = await User.findOne({ email })
+  const user = await models.User.findOne({ email })
   if (!user) throw new Error(errorName.USER_NOT_EXISTS)
 
   const checkPass = await bcrypt.compare(password, user.password)
@@ -29,4 +29,4 @@ const fetchUser = async (req) => {
   }
 }
 
-module.exports = fetchUser
+export default fetchUser;

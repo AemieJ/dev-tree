@@ -1,6 +1,6 @@
-const userQuery = require('./user')
-const personalQuery = require('./personal')
-const greeterQuery = require('./greeter')
+import userQuery from './user.js';
+import personalQuery from './personal.js';
+import greeterQuery from './greeter.js';
 
 const query = `
 type Query {
@@ -10,4 +10,4 @@ type Query {
 },
 `
 
-module.exports = query
+export default query;

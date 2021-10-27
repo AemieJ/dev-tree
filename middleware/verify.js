@@ -1,7 +1,8 @@
-require('dotenv').config()
-const jwt = require('jsonwebtoken')
-const { errorName } = require('../errors/constants')
-const { User } = require('../models/index')
+import dotenv from 'dotenv';
+dotenv.config()
+import jwt from 'jsonwebtoken';
+import { errorName } from '../errors/constants.js';
+import models from '../models/index.js';
 
 const verification = async (accessToken) => {
   const currentTimeSinceEpoch = Math.floor(new Date().getTime() / 1000)
@@ -12,7 +13,7 @@ const verification = async (accessToken) => {
   if (!check) throw new Error(errorName.INVALID_DENIED)
 
   const accessTokenExpires = check.exp
-  const user = await User.findOne({ email: check.email })
+  const user = await models.User.findOne({ email: check.email })
 
   const refreshPayload = jwt.decode(user.refreshToken)
   if (!refreshPayload) throw new Error(errorName.NOT_LOGGED_IN)
@@ -43,4 +44,4 @@ const verification = async (accessToken) => {
   }
 }
 
-module.exports = verification
+export default verification;

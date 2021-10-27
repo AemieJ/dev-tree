@@ -1,22 +1,22 @@
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config()
 
-const { errorName } = require('../../errors/constants')
-const verification = require('../../middleware/verify')
-
-const { User } = require('../../models/index')
-const { updateValidation } = require('../../validations/index')
+import { errorName } from '../../errors/constants.js';
+import verification from '../../middleware/verify.js';
+import models from '../../models/index.js';
+import validation from '../../validations/index.js';
 
 const updateUser = async (email, req, accessToken) => {
-  const { error } = updateValidation(req)
+  const { error } = validation.updateValidation(req)
   if (error) throw new Error(errorName.VALIDATION_ERROR)
 
   const value = await verification(accessToken)
   const token = value.token
   if (token === '') {
-    const user = await User.findOne({ email })
+    const user = await models.User.findOne({ email })
     if (!user) throw new Error(errorName.USER_NOT_EXISTS)
 
-    await User.updateOne({ email: email }, req)
+    await models.User.updateOne({ email: email }, req)
 
     return {
       msg: {
@@ -36,4 +36,4 @@ const updateUser = async (email, req, accessToken) => {
   }
 }
 
-module.exports = updateUser
+export default updateUser;

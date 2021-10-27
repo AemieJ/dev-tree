@@ -1,16 +1,16 @@
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config()
 
-const { errorName } = require('../../errors/constants')
-const { sendMailForPass } = require('../../middleware')
-
-const { User } = require('../../models/index')
+import { errorName } from '../../errors/constants.js';
+import middle from '../../middleware/index.js';
+import models from '../../models/index.js';
 
 const forgotPass = async (email) => {
-  const user = await User.findOne({ email })
+  const user = await models.User.findOne({ email })
   if (!user) throw new Error(errorName.USER_NOT_EXISTS)
 
   // send mail with the refresh token
-  const { status, msg } = await sendMailForPass(email, user.refreshToken)
+  const { status, msg } = await middle.sendMailForPass(email, user.refreshToken)
 
   return {
     status: status,
@@ -22,4 +22,4 @@ const forgotPass = async (email) => {
   }
 }
 
-module.exports = forgotPass
+export default forgotPass;

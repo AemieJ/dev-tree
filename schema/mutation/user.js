@@ -5,4 +5,4 @@ loginUser(body: LoginUser!): Token!
 forgotPass(email: String!): ForgotRes!
 resetPass(email: String!, password: String!, rePass: String!): String!`
 
-module.exports = userMutation
+export default userMutation;

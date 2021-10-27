@@ -1,6 +1,6 @@
-const { createID, fetchID } = require('../services/index')
+import service from '../services/index.js'
 
-const registerID = async ({ email, body, accessToken }) => {
+export const registerID = async ({ email, body, accessToken }) => {
   const req = {
     youtube: {
       id: body.youtubeID ?? '',
@@ -8,28 +8,14 @@ const registerID = async ({ email, body, accessToken }) => {
     }
   }
 
-  const value = await createID(email, req, accessToken)
+  const value = await service.createID(email, req, accessToken)
   return value.msg
 }
 
-const fetchPersonalID = async ({ email }) => {
-  const value = await fetchID(email)
+export const fetchPersonalID = async ({ email }) => {
+  const value = await service.fetchID(email)
   return value.msg
 }
-
-// const updateUserID = async ({ email, body, accessToken }) => {
-
-// }
-
-// const deleteUserID = async ({ email, body, accessToken }) => {
-
-// }
-
-module.exports = {
-  registerID,
-  fetchPersonalID
-}
-
 /*
 
 Users => name, email, password, refreshToken, profile, gender

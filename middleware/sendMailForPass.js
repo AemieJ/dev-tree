@@ -1,7 +1,8 @@
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config()
 
-const nodemailer = require('nodemailer')
-const { errorName } = require('../errors/constants')
+import nodemailer from 'nodemailer';
+import { errorName } from '../errors/constants.js';
 
 const sendMailForPass = async (receiver, refreshToken) => {
   const transporter = nodemailer.createTransport({
@@ -33,4 +34,4 @@ const sendMailForPass = async (receiver, refreshToken) => {
 }
 
 // sendMailForPass("aemie.j@gmail.com", "agegewge");
-module.exports = sendMailForPass
+export default sendMailForPass;

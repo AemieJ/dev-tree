@@ -1,12 +1,13 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-const expressGraphQL = require('express-graphql').graphqlHTTP
-const { schema } = require('./schema/index')
-const getErrorCode = require('./errors/getCode')
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import { graphqlHTTP as expressGraphQL } from 'express-graphql';
+import schema from './schema/index.js';
+import getErrorCode from './errors/getCode.js';
+
 // const { register, login, update, forgotPassword, isValidPassURL,
 // resetPassword, registerID } = require("./resolvers/index")
-const resolver = require('./resolvers/index')
+import resolver from './resolvers/index.js';
 
 const app = express()
 const PORT = 4000 || process.env.PORT

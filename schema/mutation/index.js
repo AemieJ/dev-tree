@@ -1,5 +1,5 @@
-const userMutation = require('./user')
-const personalMutation = require('./personal')
+import userMutation from './user.js';
+import personalMutation from './personal.js';
 
 const mutation = `
 type Mutation {
@@ -8,4 +8,4 @@ type Mutation {
 },
 `
 
-module.exports = mutation
+export default mutation;

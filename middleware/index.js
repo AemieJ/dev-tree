@@ -1,7 +1,8 @@
-const verification = require('./verify')
-const sendMailForPass = require('./sendMailForPass')
+import verification from './verify.js';
+import sendMailForPass from './sendMailForPass.js';
 
-module.exports = {
+let middle = {
   verification,
   sendMailForPass
 }
+export default middle;

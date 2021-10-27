@@ -1,15 +1,15 @@
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config()
 
-const { errorName } = require('../../errors/constants')
-
-const { User } = require('../../models/index')
+import { errorName } from '../../errors/constants.js';
+import models from '../../models/index.js';
 
 const isValidURL = async (email, token) => {
-  const user = await User.findOne({ email })
+  const user = await models.User.findOne({ email })
   if (!user) throw new Error(errorName.USER_NOT_EXISTS)
 
   if (user.refreshToken === token) return true
   return false
 }
 
-module.exports = isValidURL
+export default isValidURL;

@@ -1,8 +1,9 @@
-exports.errorName = {
+export const errorName = {
   VALIDATION_ERROR: 'VALIDATION_ERROR',
   USER_ALREADY_EXISTS: 'USER_ALREADY_EXISTS',
   ID_ALREADY_EXISTS: 'ID_ALREADY_EXISTS',
   ID_NOT_EXISTS: 'ID_NOT_EXISTS',
+  INVALID_ID: 'INVALID_ID',
   USER_NOT_EXISTS: 'USER_NOT_EXISTS',
   USER_INCORRECT_PASS: 'USER_INCORRECT_PASS',
   INVALID_TOKEN: 'INVALID_TOKEN',
@@ -11,12 +12,16 @@ exports.errorName = {
   MAIL_ERROR: 'MAIL_ERROR',
   UNMATCHING_PASS: 'UNMATCHING_PASS',
   SERVER_ERROR: 'SERVER_ERROR'
-}
+};
 
-exports.errorType = {
+export const errorType = {
   VALIDATION_ERROR: {
     message: 'User information is not valid',
     statusCode: 401
+  },
+  INVALID_ID: {
+    message: 'ID information is invalid. Try again.',
+    statusCode: 404
   },
   ID_ALREADY_EXISTS: {
     message: 'User ID already exists.',
@@ -62,4 +67,4 @@ exports.errorType = {
     message: 'Server error.',
     statusCode: 500
   }
-}
+};

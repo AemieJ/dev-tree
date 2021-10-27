@@ -24,4 +24,4 @@ type Personal {
     accessToken: TokenObject!
 },`
 
-module.exports = personalObj
+export default personalObj;

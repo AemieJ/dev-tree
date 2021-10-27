@@ -1,6 +1,6 @@
-const Joi = require('@hapi/joi')
+import Joi from '@hapi/joi';
 
-const treeValidation = (data) => {
+export const treeValidation = (data) => {
   const schema = Joi.object({
     youtube: {
       id: Joi.string().allow(''),
@@ -10,6 +10,3 @@ const treeValidation = (data) => {
   return schema.validate(data)
 }
 
-module.exports = {
-  treeValidation
-}

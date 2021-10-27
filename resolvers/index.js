@@ -1,6 +1,6 @@
-const { register, login } = require('./auth.controller')
-const { update, forgotPassword, isValidPassURL, resetPassword, fetch } = require('./profile.controller')
-const { registerID, fetchPersonalID } = require('./id.controller')
+import { register, login } from './auth.controller.js';
+import { update, forgotPassword, isValidPassURL, resetPassword, fetch } from './profile.controller.js';
+import { registerID, fetchPersonalID } from './id.controller.js';
 
 const resolver = {
   user: fetch,
@@ -15,4 +15,4 @@ const resolver = {
   greeter: ({ name }) => { return `Hello, ${name}.` }
 }
 
-module.exports = resolver
+export default resolver;

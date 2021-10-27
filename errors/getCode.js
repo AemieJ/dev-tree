@@ -1,7 +1,7 @@
-const { errorType } = require('./constants')
+import { errorType } from './constants.js';
 
 const getErrorCode = errorName => {
   return errorType[errorName]
 }
 
-module.exports = getErrorCode
+export default getErrorCode;
