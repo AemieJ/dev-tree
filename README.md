@@ -43,6 +43,6 @@ youtube: {
 
 ### Methods 
 1. Fetching a user's personal ID information
-2. Register user's personal ID for the first time. Here, when an id is inserted it is sent for approval to check if url exists, once each ID is verified and the IDS are registered into the database with empty/auto-generated list through web scraping
+2. Register user's personal ID when the user logs in for the first time. Here, when an id is inserted it is sent for approval to check if url exists, once each ID is verified and the IDS are registered into the database with empty/auto-generated list through web scraping
 3. A user's personal ID can not be updated however user's list pertaining to the ID can be updated by user. There is a specified number of items allowed in the list. If the user wants to add in addition to the speicified number is not possible and user needs to delete a particular list from the array (deletion of array will take from front-end and the final array list will be sent to server for updating the array).
 4. To change the personal ID, the only method is to delete the existing ID and then register with the new personal ID
