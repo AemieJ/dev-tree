@@ -9,6 +9,7 @@ import resetPass from './users/resetPass.service.js';
 import fetchDetails from './users/fetchDetails.service.js';
 import createID from './tree/createID.service.js';
 import fetchID from './tree/fetchID.service.js';
+import updateID from './tree/updateID.service.js';
 
 let service = {
   createUser,
@@ -21,7 +22,8 @@ let service = {
   isValidURL,
   resetPass,
   createID,
-  fetchID
+  fetchID,
+  updateID
 }
 
 export default service;

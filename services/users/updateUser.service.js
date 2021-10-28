@@ -28,7 +28,7 @@ const updateUser = async (email, req, accessToken) => {
   } else {
     return {
       msg: {
-        req,
+        update: req,
         email,
         accessToken: token.accessToken
       }

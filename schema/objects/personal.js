@@ -4,6 +4,10 @@ input RegisterID {
     youtubeList: [String]
 },
 
+input updateID {
+    youtubeList: [String]
+}
+
 type Obj {
     id: String!
     list: [String]!

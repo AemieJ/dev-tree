@@ -26,6 +26,6 @@
     "nodemailer": "^6.7.0",
     "nodemon": "^2.0.7",
     "standard": "^16.0.4",
-    "url-exist-sync": "^2.0.0"
+    "url-exist": "^3.0.0"
   }
 }

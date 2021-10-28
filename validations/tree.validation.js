@@ -10,3 +10,12 @@ export const treeValidation = (data) => {
   return schema.validate(data)
 }
 
+export const updateTreeValidation = (data) => {
+  const schema = Joi.object({
+    youtube: {
+      list: Joi.array().items(Joi.string()).allow(null)
+    }
+  })
+  return schema.validate(data)
+}
+
