@@ -4,6 +4,12 @@ input RegisterID {
     youtubeList: [String]
 },
 
+input InsertID {
+    id: String!
+    list: [String]
+    account: String!
+}
+
 input updateID {
     youtubeList: [String]
 }
@@ -26,6 +32,12 @@ type Personal {
     email: String!
     id: Inputs!
     accessToken: TokenObject!
-},`
+},
+
+type DeleteObj {
+    message: String!
+    status: Int!
+    accessToken: TokenObject!
+}`
 
 export default personalObj;

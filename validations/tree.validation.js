@@ -10,6 +10,16 @@ export const treeValidation = (data) => {
   return schema.validate(data)
 }
 
+export const insertTreeValidation = (data) => {
+  const schema = Joi.object({
+    youtube: {
+      id: Joi.string(),
+      list: Joi.array().items(Joi.string())
+    }
+  })
+  return schema.validate(data)
+}
+
 export const updateTreeValidation = (data) => {
   const schema = Joi.object({
     youtube: {

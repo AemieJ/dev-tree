@@ -11,7 +11,8 @@ export const errorName = {
   REFRESH_EXPIRED: 'REFRESH_EXPIRED',
   MAIL_ERROR: 'MAIL_ERROR',
   UNMATCHING_PASS: 'UNMATCHING_PASS',
-  SERVER_ERROR: 'SERVER_ERROR'
+  SERVER_ERROR: 'SERVER_ERROR',
+  NOT_ACC_DELETE: 'NOT_ACC_DELETE'
 };
 
 export const errorType = {
@@ -32,7 +33,7 @@ export const errorType = {
     statusCode: 403
   },
   ID_NOT_EXISTS: {
-    message: 'User doesn\'t have any associated ID',
+    message: 'User doesn\'t have the associated ID',
     statusCode: 404
   },
   USER_NOT_EXISTS: {
@@ -66,5 +67,9 @@ export const errorType = {
   SERVER_ERROR: {
     message: 'Server error.',
     statusCode: 500
+  },
+  NOT_ACC_DELETE: {
+    message: 'The personal ID needs to be deleted before inserting new',
+    statusCode: 401
   }
 };

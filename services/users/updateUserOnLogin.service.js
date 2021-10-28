@@ -5,9 +5,11 @@ const updateUserOnLogin = async (status, msg) => {
   if (status === 200) {
     const token = createToken(msg)
     const refreshToken = token.refreshToken.token
+    const currentDate = new Date()
+    const lastLogin = Math.floor(new Date(currentDate.getTime()).getTime() / 1000)
 
     try {
-      await models.User.findOneAndUpdate({ email: msg.email }, { refreshToken }, {
+      await models.User.findOneAndUpdate({ email: msg.email }, { refreshToken, lastLogin }, {
         new: true,
         useFindAndModify: false
       })

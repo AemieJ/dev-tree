@@ -23,7 +23,7 @@ export const fetchPersonalID = async ({ email }) => {
   return value.msg
 }
 
-export const updateID = async({ email, body, accessToken }) => {
+export const updatePersonalDetails = async({ email, body, accessToken }) => {
   const req = {
     youtube: {
       list: body.youtubeList ?? null
@@ -33,6 +33,31 @@ export const updateID = async({ email, body, accessToken }) => {
   const value = await service.updateID(email, req, accessToken)
   return value.msg
 }
+
+const returnBody = (acc, req) => {
+  if (acc === 'youtube') {
+    return {
+      youtube: {
+        id: req.id,
+        list: req.list ?? []
+      }
+    }
+  }
+}
+
+export const insertID = async({ email, body, accessToken}) => {
+  const acc = body.account; 
+  const req = returnBody(acc, body);
+
+  const value = await service.reCreateID(email, req, accessToken, acc)
+  return value.msg
+}
+
+export const deleteID = async({ email, acc, accessToken}) => {
+  const value = await service.deleteID(email, acc, accessToken)
+  return value.msg
+}
+
 
 /*
 

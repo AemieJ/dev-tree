@@ -27,6 +27,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  lastLogin: {
+    type: Number,
+    default: 0,
+    required: false
+  },
   refreshToken: {
     type: String,
     required: false,
