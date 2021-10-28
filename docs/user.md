@@ -125,6 +125,7 @@ mutation {
 ```
 
 ## 6. Forgot Password - Validate URL for pass change request (step 2)
+After the url sent to the mail is clicked it is validated to check the refresh token and mail. After the verification of the email is performed, it is then redirected to the change password page.
 <br/>
 
 ### Input
@@ -141,6 +142,7 @@ query {
 ```
 
 ## 7. Forgot Password - Password change (step 3)
+This is the final stage where the user is provided a page for changing the password and then redirected to the login page to login with the new credentials.
 <br/>
 
 ### Input 
