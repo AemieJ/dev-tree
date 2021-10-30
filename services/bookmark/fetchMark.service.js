@@ -3,11 +3,11 @@ dotenv.config()
 
 import { errorName } from '../../errors/constants.js';
 import models from '../../models/index.js';
+import middle from "../../middleware/index.js";
 
 
 const fetchBookmarks = async (email, accessToken) => {
-
-  const value = await verification(accessToken)
+  const value = await middle.verification(accessToken)
   const token = value.token
   
   if (token === "") {
@@ -24,7 +24,7 @@ const fetchBookmarks = async (email, accessToken) => {
     return {
         msg: {
           bookmarks: [],
-          accessToken: token
+          accessToken: token.accessToken
         }
       }
   }

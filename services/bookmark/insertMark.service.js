@@ -3,21 +3,30 @@ dotenv.config()
 
 import { errorName } from '../../errors/constants.js';
 import models from '../../models/index.js';
+import middle from '../../middleware/index.js';
 
 
 const insertBookmarks = async (userEmail, email, accessToken) => {
 
-  const value = await verification(accessToken)
+  const value = await middle.verification(accessToken)
   const token = value.token
   
   if (token === "") {
-    const user = await models.User.findOne({ userEmail })
+    if (userEmail === email) throw new Error(errorName.DUP_EMAIL)
+    const user = await models.User.findOne({ email: userEmail })
     if (!user) throw new Error(errorName.USER_NOT_EXISTS)
 
-    let bookmarks = user.bookmarks
-    bookmarks.add(email)
+    const addUser = await models.User.findOne({ email })
+    if (!addUser) throw new Error(errorName.USER_NOT_EXISTS)
 
-    await models.User.updateOne({ email }, { bookmarks });
+    let bookmarks = user.bookmarks
+    bookmarks.push(email)
+
+    try {
+      await models.User.updateOne({ email: userEmail }, { bookmarks })
+    } catch (err) {
+      throw new Error(errorName.SERVER_ERROR)
+    }
 
     return {
         msg: {
@@ -29,7 +38,7 @@ const insertBookmarks = async (userEmail, email, accessToken) => {
     return {
         msg: {
           bookmarks: [],
-          accessToken: token
+          accessToken: token.accessToken
         }
       }
   }

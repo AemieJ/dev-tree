@@ -7,11 +7,16 @@ import forgotPass from './users/forgotPass.service.js';
 import isValidURL from './users/isValidURL.service.js';
 import resetPass from './users/resetPass.service.js';
 import fetchDetails from './users/fetchDetails.service.js';
+
 import createID from './tree/createID.service.js';
 import fetchID from './tree/fetchID.service.js';
 import updateID from './tree/updateID.service.js';
 import reCreateID from './tree/reCreateID.service.js';
 import deleteID from './tree/deleteID.service.js';
+
+import fetchBookMarks from './bookmark/fetchMark.service.js';
+import insertBookMarks from './bookmark/insertMark.service.js';
+import removeBookMarks from './bookmark/removeMark.service.js';
 
 let service = {
   createUser,
@@ -27,7 +32,10 @@ let service = {
   fetchID,
   updateID,
   reCreateID,
-  deleteID
+  deleteID,
+  fetchBookMarks,
+  removeBookMarks,
+  insertBookMarks
 }
 
 export default service;

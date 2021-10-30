@@ -21,14 +21,21 @@ token: {
 }
 gender: String (male / female)
 profile: String (image url)
+bookmarks: Array of String
 ```
 
-### Methods 
+### Methods for user section
 1. Fetching a user information 
 2. Register with user information (using the model values - {token})
 3. Login with mail and password (token object generated => refreshToken stored in database) 
 4. Forgot/change password flow: send mail with user's mail and refreshToken link, once link clicked from mail, url is verified based on mail and refreshToken, change password feature is available then, after which login is performed again
 5. Update user information ( user model - {email, password, token})
+
+### Methods for bookmark section
+Bookmarks is a collection of saved dev-tree profiles and this feature is only available for authenticated user. 
+1. A bookmark section to fetch all the bookmarks of the user
+2. On the dev-tree profile of a user, there is a button through which one can bookmark and the email of this user will be added
+3. In the bookmark section of authenticated user, you can remove a profile from the bookmark section
 
 ## Model: Personal ID
 After successful login, the user is allowed to add personal ID. Personal ID, in the context of the product, are the IDs that is specifically under the user. For example, a user can create videos under its own youtube channel and also in collaboration with other organization but personal ID only takes into account of videos under its own yt channel. 
@@ -41,7 +48,7 @@ youtube: {
 }
 ```
 
-### Methods 
+### Methods for personal id section
 1. Fetching a user's personal ID information
 2. Register user's personal ID when the user logs in for the first time. Here, when an id is inserted it is sent for approval to check if url exists, once each ID is verified and the IDS are registered into the database with empty/auto-generated list through web scraping
 3. A user's personal ID can not be updated however user's list pertaining to the ID can be updated by user. There is a specified number of items allowed in the list. If the user wants to add in addition to the speicified number is not possible and user needs to delete a particular list from the array (deletion of array will take from front-end and the final array list will be sent to server for updating the array).

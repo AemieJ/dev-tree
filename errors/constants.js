@@ -12,7 +12,8 @@ export const errorName = {
   MAIL_ERROR: 'MAIL_ERROR',
   UNMATCHING_PASS: 'UNMATCHING_PASS',
   SERVER_ERROR: 'SERVER_ERROR',
-  NOT_ACC_DELETE: 'NOT_ACC_DELETE'
+  NOT_ACC_DELETE: 'NOT_ACC_DELETE',
+  DUP_EMAIL: 'DUP_EMAIL'
 };
 
 export const errorType = {
@@ -37,7 +38,7 @@ export const errorType = {
     statusCode: 404
   },
   USER_NOT_EXISTS: {
-    message: 'Invalid Email',
+    message: 'Invalid Email. Doesn\'t exist in the database',
     statusCode: 403
   },
   USER_INCORRECT_PASS: {
@@ -71,5 +72,9 @@ export const errorType = {
   NOT_ACC_DELETE: {
     message: 'The personal ID needs to be deleted before inserting new',
     statusCode: 401
+  },
+  DUP_EMAIL: {
+    message: 'User\'s personal mail can\'t be used for bookmarking itself',
+    statusCode: 403
   }
 };
