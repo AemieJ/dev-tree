@@ -32,6 +32,11 @@ const userSchema = new mongoose.Schema({
     default: 0,
     required: false
   },
+  bookmarks: {
+    type: [String], 
+    default: [],
+    required: false
+  },
   refreshToken: {
     type: String,
     required: false,
