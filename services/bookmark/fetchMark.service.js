@@ -16,6 +16,7 @@ const fetchBookmarks = async (email, accessToken) => {
 
     return {
         msg: {
+          status: 200,
           bookmarks: user.bookmarks,
           accessToken: { token: '', expires: 0 }
         }
@@ -23,6 +24,7 @@ const fetchBookmarks = async (email, accessToken) => {
   } else {
     return {
         msg: {
+          status: 403,
           bookmarks: [],
           accessToken: token.accessToken
         }

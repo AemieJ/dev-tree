@@ -27,6 +27,7 @@ const removeBookmarks = async (userEmail, email, accessToken) => {
 
     return {
         msg: {
+          status: 200,
           bookmarks: bookmarks,
           accessToken: { token: '', expires: 0 }
         }
@@ -34,6 +35,7 @@ const removeBookmarks = async (userEmail, email, accessToken) => {
   } else {
     return {
         msg: {
+          status: 403,
           bookmarks: [],
           accessToken: token.accessToken
         }

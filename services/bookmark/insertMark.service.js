@@ -30,6 +30,7 @@ const insertBookmarks = async (userEmail, email, accessToken) => {
 
     return {
         msg: {
+          status: 201,
           bookmarks: bookmarks,
           accessToken: { token: '', expires: 0 }
         }
@@ -37,6 +38,7 @@ const insertBookmarks = async (userEmail, email, accessToken) => {
   } else {
     return {
         msg: {
+          status: 403,
           bookmarks: [],
           accessToken: token.accessToken
         }

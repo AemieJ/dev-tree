@@ -4,7 +4,8 @@ type BookMark {
 },
 
 type BookMarks {
-    bookmarks: [String!],
+    status: Int!
+    bookmarks: [String!]
     accessToken: TokenObject!
 }
 `
