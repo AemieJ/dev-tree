@@ -13,6 +13,7 @@ let email =  "aemie.j@gmail.com";
 ```
 query {
   user(email: ${email}) {
+    status
     name
     email
     profile
@@ -38,6 +39,7 @@ let body = {
 ```
 mutation {
   registerUser(body: ${body}) {
+    status
     name
     email
     gender
@@ -62,6 +64,7 @@ let body = {
 ```
 mutation {
   loginUser(body: ${body}) {
+    status
     accessToken {
       token
       expires
@@ -91,6 +94,7 @@ let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFlbWllLmpA
 ```
 mutation {
   updateUserInfo(email: ${email}, body: ${body}, accessToken: ${accessToken}) {
+    status
     update {
       name
       profile
@@ -118,6 +122,7 @@ let email = "aemie.j@gmail.com";
 ```
 mutation {
   forgotPass(email: ${email}) {
+    status
     email
     message
   }
@@ -155,6 +160,9 @@ let rePass = "Testing#15";
 ### Query
 ```
 mutation {
-  resetPass(email: ${email}, password: ${password}, rePass: ${rePass})
+  resetPass(email: ${email}, password: ${password}, rePass: ${rePass}) {
+    message
+    status
+  }
 }
 ```

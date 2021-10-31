@@ -14,6 +14,7 @@ let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBheWFsLnNo
 ```
 query {
   bookmarks(email: ${email}, accessToken: ${accessToken}) {
+    status
     bookmarks
     accessToken {
       token
@@ -37,6 +38,7 @@ let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBheWFsLnNo
 ```
 mutation {
   insertBookmark(userEmail: ${userEmail}, email: ${email}, accessToken: ${accessToken}) {
+    status
     bookmarks
     accessToken {
       token
@@ -59,6 +61,7 @@ let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBheWFsLnNo
 ```
 mutation {
   removeBookmark(userEmail: $userEmail, email: $email, accessToken: $accessToken) {
+    status
     bookmarks
     accessToken {
       token

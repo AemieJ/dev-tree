@@ -13,6 +13,7 @@ let email =  "aemie.j@gmail.com";
 ```
 query {
   personal(email: ${email}) {
+    status
     email
     id {
       youtube {
@@ -42,6 +43,7 @@ let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFlbWllLmpA
 ```
 mutation {
   insertPersonalID(email: ${email}, body: ${body}, accessToken: ${accessToken}) {
+    status
     id {
       youtube {
         id
@@ -72,6 +74,7 @@ let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFlbWllLmpA
 ```
 mutation {
   updatePersonalID(email: ${email}, body: ${body}, accessToken: ${accessToken}) {
+    status
     id {
       youtube {
         id
@@ -100,6 +103,7 @@ let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFlbWllLmpA
 ```
 mutation {
   deletePersonalID(email: ${email}, acc: ${acc}, accessToken: ${accessToken}) {
+    status
     message
     status
     accessToken {
@@ -128,6 +132,7 @@ let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFlbWllLmpA
 ```
 mutation {
   addPersonalID(email: ${email}, body: ${body}, accessToken: ${accessToken}) {
+    status
     email
     id {
       youtube {
