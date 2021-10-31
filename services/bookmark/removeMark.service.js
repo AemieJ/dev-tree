@@ -6,7 +6,7 @@ import models from '../../models/index.js';
 import middle from '../../middleware/index.js';
 
 const removeBookmarks = async (userEmail, email, accessToken) => {
-  const value = await middle.verification(accessToken)
+  const value = await middle.verification(accessToken, userEmail)
   const token = value.token
   if (token === "") {
     if (userEmail === email) throw new Error(errorName.DUP_EMAIL)

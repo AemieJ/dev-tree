@@ -7,7 +7,7 @@ import models from '../../models/index.js';
 
 const deleteID = async (email, acc, accessToken) => {
 
-  const value = await middle.verification(accessToken)
+  const value = await middle.verification(accessToken, email)
   const token = value.token
   if (token === '') {
     const personal = await models.Personal.findOne({ email })

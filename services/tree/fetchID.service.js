@@ -15,6 +15,7 @@ const fetchID = async (email) => {
 
   return {
     msg: {
+      status: 200,
       id: req,
       email
     }

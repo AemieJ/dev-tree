@@ -10,7 +10,7 @@ const reCreateID = async (email, body, accessToken, acc) => {
   const { error } = validation.insertTreeValidation(body)
   if (error) throw new Error(errorName.VALIDATION_ERROR)
 
-  const value = await middle.verification(accessToken)
+  const value = await middle.verification(accessToken, email)
   const token = value.token
   if (token === '') {
     const checkUserExists = await models.Personal.findOne({ email })
@@ -28,6 +28,7 @@ const reCreateID = async (email, body, accessToken, acc) => {
 
     return {
       msg: {
+        status: 200,
         id: body,
         email,
         accessToken: { token: '', expires: 0 }
@@ -36,6 +37,7 @@ const reCreateID = async (email, body, accessToken, acc) => {
   } else {
     return {
       msg: {
+        status: 403,
         id: body,
         email,
         accessToken: token.accessToken

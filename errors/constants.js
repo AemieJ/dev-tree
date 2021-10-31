@@ -21,6 +21,10 @@ export const errorType = {
     message: 'User information is not valid',
     statusCode: 401
   },
+  INVALID_TOKEN: {
+    message: 'Token is invalid',
+    statusCode: 403
+  },
   INVALID_ID: {
     message: 'ID information is invalid. Try again.',
     statusCode: 404

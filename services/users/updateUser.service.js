@@ -10,7 +10,7 @@ const updateUser = async (email, req, accessToken) => {
   const { error } = validation.updateValidation(req)
   if (error) throw new Error(errorName.VALIDATION_ERROR)
 
-  const value = await verification(accessToken)
+  const value = await verification(accessToken, email)
   const token = value.token
   if (token === '') {
     const user = await models.User.findOne({ email })

@@ -9,7 +9,7 @@ import validation from '../../validations/index.js';
 const updateID = async (email, req, accessToken) => {
   const { error } = validation.updateTreeValidation(req)
   if (error) throw new Error(errorName.VALIDATION_ERROR)
-  const value = await middle.verification(accessToken)
+  const value = await middle.verification(accessToken, email)
   const token = value.token
   if (token === '') {
     const checkUserExists = await models.Personal.findOne({ email })
@@ -30,6 +30,7 @@ const updateID = async (email, req, accessToken) => {
 
     return {
       msg: {
+        status: 200, 
         id: reqUpdate,
         email,
         accessToken: { token: '', expires: 0 }
@@ -44,6 +45,7 @@ const updateID = async (email, req, accessToken) => {
     }
     return {
       msg: {
+        status: 403, 
         id: emptyReq,
         email,
         accessToken: token.accessToken

@@ -7,7 +7,7 @@ import middle from "../../middleware/index.js";
 
 
 const fetchBookmarks = async (email, accessToken) => {
-  const value = await middle.verification(accessToken)
+  const value = await middle.verification(accessToken, email)
   const token = value.token
   
   if (token === "") {

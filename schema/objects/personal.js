@@ -24,11 +24,13 @@ type Inputs {
 },
 
 type FetchPersonal {
+    status: Int!
     email: String!
     id: Inputs!
 }
 
 type Personal {
+    status: Int!
     email: String!
     id: Inputs!
     accessToken: TokenObject!
