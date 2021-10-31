@@ -9,7 +9,7 @@ export const login = async (req) => {
   const { status, msg } = await service.fetchUser(req.body)
   const response = await service.updateUserOnLogin(status, msg)
   if (response.status === 200) {
-    return response.msg
+    return response.message
   }
-  return response.msg
+  return response.message
 }

@@ -20,6 +20,7 @@ const updateUser = async (email, req, accessToken) => {
 
     return {
       msg: {
+        status: 201,
         update: req,
         email,
         accessToken: { token: '', expires: 0 }
@@ -28,6 +29,7 @@ const updateUser = async (email, req, accessToken) => {
   } else {
     return {
       msg: {
+        status: 403,
         update: req,
         email,
         accessToken: token.accessToken

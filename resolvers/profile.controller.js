@@ -22,5 +22,5 @@ export const isValidPassURL = async ({ email, token }) => {
 
 export const resetPassword = async ({ email, password, rePass }) => {
   const value = await service.resetPass(email, password, rePass)
-  if (value.status === 200) return value.message
+  if (value.status === 200) return value.msg
 }

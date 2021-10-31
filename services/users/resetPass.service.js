@@ -16,7 +16,10 @@ const resetPass = async (email, pass, rePass) => {
   await models.User.updateOne({ email: email }, { password: hashedPassword })
   return {
     status: 200,
-    message: 'Login with your new credentials'
+    msg: {
+      status: 200,
+      message: 'Login with your new credentials'
+    }
   }
 }
 

@@ -13,8 +13,8 @@ const forgotPass = async (email) => {
   const { status, msg } = await middle.sendMailForPass(email, user.refreshToken)
 
   return {
-    status: status,
     msg: {
+      status: status,
       name: user.name,
       email: user.email,
       message: msg

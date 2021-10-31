@@ -24,8 +24,8 @@ const createUser = async (req) => {
   try {
     await user.save()
     return {
-      status: 201,
       msg: {
+        status: 201,
         id: user._id,
         name: user.name,
         email: user.email,

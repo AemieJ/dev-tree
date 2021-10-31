@@ -10,6 +10,7 @@ const fetchDetails = async (email) => {
 
   return {
     msg: {
+      status: 200,
       name: user.name,
       email,
       gender: user.gender,

@@ -17,14 +17,20 @@ const updateUserOnLogin = async (status, msg) => {
         headerName: 'auth-token',
         headerValue: token.accessToken.token,
         status: 200,
-        msg: token
+        message: {
+          status: 200,
+          msg: token
+        }
       }
     } catch (err) {
       return {
         headerName: '',
         headerValue: '',
         status: 500,
-        msg: err
+        message: {
+          status: 500,
+          msg: err
+        }
       }
     }
   } else {
@@ -32,7 +38,10 @@ const updateUserOnLogin = async (status, msg) => {
       headerName: '',
       headerValue: '',
       status,
-      msg
+      message: {
+        status, 
+        msg
+      }
     }
   }
 }

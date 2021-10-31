@@ -18,10 +18,16 @@ input UpdateUser {
 },
 
 type ForgotRes {
+    status: Int!
     name: String!
     email: String!
     message: String!
 },
+
+type ResetPassObj {
+    status: Int!
+    message: String!
+}
 
 type TokenObject {
     token: String!
@@ -33,6 +39,7 @@ type ObjectUpdating {
     profile: String
 }
 type UpdateObject {
+    status: Int!
     update: ObjectUpdating
     email: String
     accessToken: TokenObject
@@ -42,7 +49,13 @@ type Token {
     refreshToken: TokenObject!
 },
 
+type LoginObj {
+    status: Int!
+    msg: Token!
+}
+
 type User {
+    status: Int!
     name: String!
     email: String!
     gender: String!
