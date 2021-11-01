@@ -10,7 +10,6 @@ import getErrorCode from './errors/getCode.js';
 import resolver from './resolvers/index.js';
 
 const app = express()
-const PORT = 4000 || process.env.PORT
 dotenv.config()
 
 mongoose.connect(process.env.DB_CONNECT, {
@@ -33,4 +32,4 @@ app.get('/', (req, res) => {
   res.status(200).json({ msg: 'Hey there' })
 })
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+export default app;

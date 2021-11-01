@@ -20,6 +20,7 @@ const insertBookmarks = async (userEmail, email, accessToken) => {
     if (!addUser) throw new Error(errorName.USER_NOT_EXISTS)
 
     let bookmarks = user.bookmarks
+    bookmarks = bookmarks.filter(mark => mark !== email)
     bookmarks.push(email)
 
     try {
