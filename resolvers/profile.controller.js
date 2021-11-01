@@ -5,6 +5,11 @@ export const fetch = async ({ email }) => {
   return value.msg
 }
 
+export const fetchAll = async () => {
+  const value = await service.fetchAll()
+  return value.msg
+}
+
 export const update = async ({ email, body, accessToken }) => {
   const value = await service.updateUser(email, body, accessToken)
   return value.msg

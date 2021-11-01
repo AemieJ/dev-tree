@@ -7,6 +7,7 @@ import forgotPass from './users/forgotPass.service.js';
 import isValidURL from './users/isValidURL.service.js';
 import resetPass from './users/resetPass.service.js';
 import fetchDetails from './users/fetchDetails.service.js';
+import fetchAll from './users/fetchAll.service.js';
 
 import createID from './tree/createID.service.js';
 import fetchID from './tree/fetchID.service.js';
@@ -23,6 +24,7 @@ let service = {
   createToken,
   fetchUser,
   fetchDetails,
+  fetchAll,
   updateUser,
   updateUserOnLogin,
   forgotPass,

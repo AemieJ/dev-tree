@@ -27,7 +27,7 @@ type ForgotRes {
 type ResetPassObj {
     status: Int!
     message: String!
-}
+},
 
 type TokenObject {
     token: String!
@@ -60,6 +60,18 @@ type User {
     email: String!
     gender: String!
     profile: String!
-},`
+},
+
+type UsersObj {
+    name: String!
+    email: String!
+    gender: String!
+    profile: String!
+}, 
+
+type Users {
+    status: Int!
+    users: [UsersObj!]
+}`
 
 export default userObj;
