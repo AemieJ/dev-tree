@@ -7,12 +7,19 @@ const updateUserOnLogin = async (status, msg) => {
     const refreshToken = token.refreshToken.token
     const currentDate = new Date()
     const lastLogin = Math.floor(new Date(currentDate.getTime()).getTime() / 1000)
+    let isFirstTimeLogin = false
+
+    const user = await models.User.findOne({ email: msg.email })
+    if (user.lastLogin === 0) {
+      isFirstTimeLogin = true
+    }
 
     try {
-      await models.User.findOneAndUpdate({ email: msg.email }, { refreshToken, lastLogin }, {
+      await models.User.findOneAndUpdate({ email: msg.email }, { refreshToken, lastLogin, isFirstTimeLogin }, {
         new: true,
         useFindAndModify: false
       })
+
       return {
         headerName: 'auth-token',
         headerValue: token.accessToken.token,

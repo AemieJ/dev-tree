@@ -2,7 +2,6 @@ import chai from 'chai'
 import chaiGraphQL from 'chai-graphql'
 import supertest from "supertest"
 import app from "../index.js"
-import mongoose from 'mongoose'
 
 chai.use(chaiGraphQL)
 let assert = chai.assert
@@ -22,11 +21,11 @@ const convertObjToString = (obj) => {
     return stringify
 }
 
-describe('Bookmark section methods', () => {
+describe('🚀 Bookmark section methods', () => {
     it('Logins a user', (done) => {
         let body = {
             email: "kshitij.suri@gmail.com",
-            password: "Testing#15"        
+            password: "Test#123"        
         };
 
         body = convertObjToString(body)
@@ -85,6 +84,7 @@ describe('Bookmark section methods', () => {
             let data = res.body.data.insertBookmark
             assert.deepEqual(data.status, 201)
             assert.isArray(data.bookmarks)
+            assert.lengthOf(data.bookmarks, 1)
             done()
         })
     })
@@ -136,6 +136,7 @@ describe('Bookmark section methods', () => {
             let data = res.body.data.removeBookmark
             assert.deepEqual(data.status, 200)
             assert.isArray(data.bookmarks)
+            assert.lengthOf(data.bookmarks, 0)
             done()
         })
     })

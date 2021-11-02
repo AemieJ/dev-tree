@@ -14,7 +14,6 @@ const deleteID = async (email, acc, accessToken) => {
     if (!personal) throw new Error(errorName.ID_NOT_EXISTS)
 
     if (acc === 'youtube') {
-    console.log(personal.youtube)
       if (personal.youtube.id === '') throw new Error(errorName.ID_NOT_EXISTS)
       personal.youtube = undefined;
     }

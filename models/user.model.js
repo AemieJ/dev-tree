@@ -32,6 +32,11 @@ const userSchema = new mongoose.Schema({
     default: 0,
     required: false
   },
+  isFirstTimeLogin: {
+    type: Boolean,
+    default: false, 
+    required: false
+  },
   bookmarks: {
     type: [String], 
     default: [],

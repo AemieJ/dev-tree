@@ -13,6 +13,7 @@ const fetchDetails = async (email) => {
       status: 200,
       name: user.name,
       email,
+      isFirstTimeLogin: user.isFirstTimeLogin,
       gender: user.gender,
       profile: user.profile
     }

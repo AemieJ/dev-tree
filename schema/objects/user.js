@@ -60,6 +60,7 @@ type User {
     email: String!
     gender: String!
     profile: String!
+    isFirstTimeLogin: Boolean!
 },
 
 type UsersObj {

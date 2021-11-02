@@ -2,7 +2,6 @@ import chai from 'chai'
 import chaiGraphQL from 'chai-graphql'
 import supertest from "supertest"
 import app from "../index.js"
-import mongoose from 'mongoose'
 
 chai.use(chaiGraphQL)
 let assert = chai.assert
@@ -22,7 +21,7 @@ const convertObjToString = (obj) => {
     return stringify
 }
 
-describe('User section methods', () => {
+describe('🚀 User section methods', () => {
     it('Fetch all users', (done) => {
         const query = `query {
             users {
