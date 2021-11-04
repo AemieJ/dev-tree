@@ -14,7 +14,7 @@ export const errorName = {
   SERVER_ERROR: 'SERVER_ERROR',
   NOT_ACC_DELETE: 'NOT_ACC_DELETE',
   DUP_EMAIL: 'DUP_EMAIL'
-};
+}
 
 export const errorType = {
   VALIDATION_ERROR: {
@@ -81,4 +81,4 @@ export const errorType = {
     message: 'User\'s personal mail can\'t be used for bookmarking itself',
     statusCode: 403
   }
-};
+}

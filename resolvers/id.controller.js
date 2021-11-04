@@ -1,9 +1,9 @@
 import service from '../services/index.js'
-import urlExist from "url-exist"
+import urlExist from 'url-exist'
 
 export const approveID = async ({ id }) => {
-  const status = await urlExist(id);
-  return status;
+  const status = await urlExist(id)
+  return status
 }
 
 export const registerID = async ({ email, body, accessToken }) => {
@@ -23,7 +23,7 @@ export const fetchPersonalID = async ({ email }) => {
   return value.msg
 }
 
-export const updatePersonalDetails = async({ email, body, accessToken }) => {
+export const updatePersonalDetails = async ({ email, body, accessToken }) => {
   const req = {
     youtube: {
       list: body.youtubeList ?? null
@@ -45,19 +45,18 @@ const returnBody = (acc, req) => {
   }
 }
 
-export const insertID = async({ email, body, accessToken}) => {
-  const acc = body.account; 
-  const req = returnBody(acc, body);
+export const insertID = async ({ email, body, accessToken }) => {
+  const acc = body.account
+  const req = returnBody(acc, body)
 
   const value = await service.reCreateID(email, req, accessToken, acc)
   return value.msg
 }
 
-export const deleteID = async({ email, acc, accessToken}) => {
+export const deleteID = async ({ email, acc, accessToken }) => {
   const value = await service.deleteID(email, acc, accessToken)
   return value.msg
 }
-
 
 /*
 

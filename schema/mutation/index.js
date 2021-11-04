@@ -1,6 +1,6 @@
-import userMutation from './user.js';
-import personalMutation from './personal.js';
-import bookMarkMutation from './bookmark.js';
+import userMutation from './user.js'
+import personalMutation from './personal.js'
+import bookMarkMutation from './bookmark.js'
 
 const mutation = `
 type Mutation {
@@ -10,4 +10,4 @@ type Mutation {
 },
 `
 
-export default mutation;
+export default mutation

@@ -42,4 +42,4 @@ type DeleteObj {
     accessToken: TokenObject!
 }`
 
-export default personalObj;
+export default personalObj

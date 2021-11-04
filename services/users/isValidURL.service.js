@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import dotenv from 'dotenv'
 
-import { errorName } from '../../errors/constants.js';
-import models from '../../models/index.js';
+import { errorName } from '../../errors/constants.js'
+import models from '../../models/index.js'
+dotenv.config()
 
 const isValidURL = async (email, token) => {
   const user = await models.User.findOne({ email })
@@ -12,4 +12,4 @@ const isValidURL = async (email, token) => {
   return false
 }
 
-export default isValidURL;
+export default isValidURL

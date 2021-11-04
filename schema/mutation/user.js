@@ -5,4 +5,4 @@ loginUser(body: LoginUser!): LoginObj!
 forgotPass(email: String!): ForgotRes!
 resetPass(email: String!, password: String!, rePass: String!): ResetPassObj!`
 
-export default userMutation;
+export default userMutation

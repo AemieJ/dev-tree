@@ -1,7 +1,7 @@
-import { register, login } from './auth.controller.js';
-import { update, forgotPassword, isValidPassURL, resetPassword, fetch, fetchAll } from './profile.controller.js';
-import { registerID, fetchPersonalID, approveID, updatePersonalDetails, insertID, deleteID } from './id.controller.js';
-import { getBookmarks, insertBookMark, removeBookMark } from './bookmark.controller.js';
+import { register, login } from './auth.controller.js'
+import { update, forgotPassword, isValidPassURL, resetPassword, fetch, fetchAll } from './profile.controller.js'
+import { registerID, fetchPersonalID, approveID, updatePersonalDetails, insertID, deleteID } from './id.controller.js'
+import { getBookmarks, insertBookMark, removeBookMark } from './bookmark.controller.js'
 
 const resolver = {
   user: fetch,
@@ -24,4 +24,4 @@ const resolver = {
   greeter: ({ name }) => { return `Hello, ${name}.` }
 }
 
-export default resolver;
+export default resolver

@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
+import jwt from 'jsonwebtoken'
+import { errorName } from '../errors/constants.js'
+import models from '../models/index.js'
 dotenv.config()
-import jwt from 'jsonwebtoken';
-import { errorName } from '../errors/constants.js';
-import models from '../models/index.js';
 
 const verification = async (accessToken, email) => {
   const currentTimeSinceEpoch = Math.floor(new Date().getTime() / 1000)
@@ -19,7 +19,7 @@ const verification = async (accessToken, email) => {
   const refreshPayload = jwt.decode(user.refreshToken)
   if (!refreshPayload) throw new Error(errorName.NOT_LOGGED_IN)
 
-  if (currentTimeSinceEpoch > refreshPayload.exp) { throw new Error(errorName.REFRESH_EXPIRED)  }
+  if (currentTimeSinceEpoch > refreshPayload.exp) { throw new Error(errorName.REFRESH_EXPIRED) }
 
   // refreshing the access token with the help of refresh token
   if (currentTimeSinceEpoch > accessTokenExpires) {
@@ -33,7 +33,7 @@ const verification = async (accessToken, email) => {
       }
       return { status: 200, token: token, payload: '' }
     } else {
-      throw new Error(errorName.REFRESH_EXPIRED) 
+      throw new Error(errorName.REFRESH_EXPIRED)
     }
   } else {
     try {
@@ -45,4 +45,4 @@ const verification = async (accessToken, email) => {
   }
 }
 
-export default verification;
+export default verification

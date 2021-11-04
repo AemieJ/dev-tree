@@ -1,5 +1,5 @@
-import models from '../../models/index.js';
-import createToken from './createToken.service.js';
+import models from '../../models/index.js'
+import createToken from './createToken.service.js'
 
 const updateUserOnLogin = async (status, msg) => {
   if (status === 200) {
@@ -46,11 +46,11 @@ const updateUserOnLogin = async (status, msg) => {
       headerValue: '',
       status,
       message: {
-        status, 
+        status,
         msg
       }
     }
   }
 }
 
-export default updateUserOnLogin;
+export default updateUserOnLogin

@@ -1,4 +1,4 @@
-import service from '../services/index.js';
+import service from '../services/index.js'
 
 export const register = async (req) => {
   const value = await service.createUser(req.body)

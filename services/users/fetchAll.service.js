@@ -1,7 +1,7 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import dotenv from 'dotenv'
 
-import models from '../../models/index.js';
+import models from '../../models/index.js'
+dotenv.config()
 
 const fetchAll = async () => {
   const users = await models.User.find()
@@ -14,4 +14,4 @@ const fetchAll = async () => {
   }
 }
 
-export default fetchAll;
+export default fetchAll

@@ -4,4 +4,4 @@ updatePersonalID(email: String!, body: updateID!, accessToken: String!): Persona
 addPersonalID(email: String!, body: InsertID!, accessToken: String!): Personal!
 deletePersonalID(email: String!, acc: String!, accessToken: String!): DeleteObj!`
 
-export default personalMutation;
+export default personalMutation

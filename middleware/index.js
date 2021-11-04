@@ -1,8 +1,8 @@
-import verification from './verify.js';
-import sendMailForPass from './sendMailForPass.js';
+import verification from './verify.js'
+import sendMailForPass from './sendMailForPass.js'
 
-let middle = {
+const middle = {
   verification,
   sendMailForPass
 }
-export default middle;
+export default middle

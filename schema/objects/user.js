@@ -75,4 +75,4 @@ type Users {
     users: [UsersObj!]
 }`
 
-export default userObj;
+export default userObj

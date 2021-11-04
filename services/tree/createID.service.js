@@ -1,10 +1,10 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import dotenv from 'dotenv'
 
-import { errorName } from '../../errors/constants.js';
-import middle from '../../middleware/index.js';
-import models from '../../models/index.js';
-import validation from '../../validations/index.js';
+import { errorName } from '../../errors/constants.js'
+import middle from '../../middleware/index.js'
+import models from '../../models/index.js'
+import validation from '../../validations/index.js'
+dotenv.config()
 
 const createID = async (email, req, accessToken) => {
   const { error } = validation.treeValidation(req)
@@ -47,4 +47,4 @@ const createID = async (email, req, accessToken) => {
   }
 }
 
-export default createID;
+export default createID

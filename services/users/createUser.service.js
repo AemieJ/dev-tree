@@ -1,10 +1,10 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
+import bcrypt from 'bcrypt'
+import toonavatar from 'cartoon-avatar'
+import { errorName } from '../../errors/constants.js'
+import models from '../../models/index.js'
+import validation from '../../validations/index.js'
 dotenv.config()
-import bcrypt from 'bcrypt';
-import toonavatar from 'cartoon-avatar';
-import { errorName } from '../../errors/constants.js';
-import models from '../../models/index.js';
-import validation from '../../validations/index.js';
 
 const createUser = async (req) => {
   const { name, email, gender, password } = req
@@ -38,4 +38,4 @@ const createUser = async (req) => {
   }
 }
 
-export default createUser;
+export default createUser

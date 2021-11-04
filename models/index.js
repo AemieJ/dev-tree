@@ -1,9 +1,9 @@
-import User from './user.model.js';
-import Personal from './personal.model.js';
+import User from './user.model.js'
+import Personal from './personal.model.js'
 
-let models = {
-  User, 
+const models = {
+  User,
   Personal
 }
 
-export default models;
+export default models

@@ -1,4 +1,4 @@
-import service from '../services/index.js';
+import service from '../services/index.js'
 
 export const fetch = async ({ email }) => {
   const value = await service.fetchDetails(email)

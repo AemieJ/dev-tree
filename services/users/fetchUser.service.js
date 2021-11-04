@@ -1,10 +1,10 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import dotenv from 'dotenv'
 
-import bcrypt from 'bcrypt';
-import { errorName } from '../../errors/constants.js';
-import models from '../../models/index.js';
-import validation from '../../validations/index.js';
+import bcrypt from 'bcrypt'
+import { errorName } from '../../errors/constants.js'
+import models from '../../models/index.js'
+import validation from '../../validations/index.js'
+dotenv.config()
 
 const fetchUser = async (req) => {
   const { email, password } = req
@@ -29,4 +29,4 @@ const fetchUser = async (req) => {
   }
 }
 
-export default fetchUser;
+export default fetchUser

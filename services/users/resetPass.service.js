@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import dotenv from 'dotenv'
 
-import bcrypt from 'bcrypt';
-import { errorName } from '../../errors/constants.js';
-import models from '../../models/index.js';
+import bcrypt from 'bcrypt'
+import { errorName } from '../../errors/constants.js'
+import models from '../../models/index.js'
+dotenv.config()
 
 const resetPass = async (email, pass, rePass) => {
   const user = await models.User.findOne({ email })
@@ -23,4 +23,4 @@ const resetPass = async (email, pass, rePass) => {
   }
 }
 
-export default resetPass;
+export default resetPass

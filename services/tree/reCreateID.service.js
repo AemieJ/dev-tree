@@ -1,10 +1,10 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import dotenv from 'dotenv'
 
-import { errorName } from '../../errors/constants.js';
-import middle from '../../middleware/index.js';
-import models from '../../models/index.js';
-import validation from '../../validations/index.js';
+import { errorName } from '../../errors/constants.js'
+import middle from '../../middleware/index.js'
+import models from '../../models/index.js'
+import validation from '../../validations/index.js'
+dotenv.config()
 
 const reCreateID = async (email, body, accessToken, acc) => {
   const { error } = validation.insertTreeValidation(body)
@@ -21,7 +21,7 @@ const reCreateID = async (email, body, accessToken, acc) => {
     }
 
     try {
-      await models.Personal.updateOne({ email }, body);
+      await models.Personal.updateOne({ email }, body)
     } catch (err) {
       throw new Error(errorName.SERVER_ERROR)
     }
@@ -46,4 +46,4 @@ const reCreateID = async (email, body, accessToken, acc) => {
   }
 }
 
-export default reCreateID;
+export default reCreateID

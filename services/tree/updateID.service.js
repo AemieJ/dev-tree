@@ -1,10 +1,10 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import dotenv from 'dotenv'
 
-import { errorName } from '../../errors/constants.js';
-import middle from '../../middleware/index.js';
-import models from '../../models/index.js';
-import validation from '../../validations/index.js';
+import { errorName } from '../../errors/constants.js'
+import middle from '../../middleware/index.js'
+import models from '../../models/index.js'
+import validation from '../../validations/index.js'
+dotenv.config()
 
 const updateID = async (email, req, accessToken) => {
   const { error } = validation.updateTreeValidation(req)
@@ -15,10 +15,10 @@ const updateID = async (email, req, accessToken) => {
     const checkUserExists = await models.Personal.findOne({ email })
     if (!checkUserExists) throw new Error(errorName.ID_NOT_EXISTS)
 
-    let reqUpdate = {
+    const reqUpdate = {
       youtube: {
         id: checkUserExists.youtube.id,
-        list: (req.youtube.list === null ? checkUserExists.youtube.list : req.youtube.list),
+        list: (req.youtube.list === null ? checkUserExists.youtube.list : req.youtube.list)
       }
     }
 
@@ -30,22 +30,22 @@ const updateID = async (email, req, accessToken) => {
 
     return {
       msg: {
-        status: 200, 
+        status: 200,
         id: reqUpdate,
         email,
         accessToken: { token: '', expires: 0 }
       }
     }
   } else {
-    let emptyReq = {
+    const emptyReq = {
       youtube: {
-        id: "",
+        id: '',
         list: []
       }
     }
     return {
       msg: {
-        status: 403, 
+        status: 403,
         id: emptyReq,
         email,
         accessToken: token.accessToken
@@ -54,4 +54,4 @@ const updateID = async (email, req, accessToken) => {
   }
 }
 
-export default updateID;
+export default updateID

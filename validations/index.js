@@ -1,8 +1,8 @@
-import { registerValidation, loginValidation }from './auth.validation.js';
-import { updateValidation } from './profile.validation.js';
-import { treeValidation, updateTreeValidation, insertTreeValidation } from './tree.validation.js';
+import { registerValidation, loginValidation } from './auth.validation.js'
+import { updateValidation } from './profile.validation.js'
+import { treeValidation, updateTreeValidation, insertTreeValidation } from './tree.validation.js'
 
-let validation = {
+const validation = {
   registerValidation,
   loginValidation,
   updateValidation,
@@ -11,4 +11,4 @@ let validation = {
   updateTreeValidation
 }
 
-export default validation;
+export default validation

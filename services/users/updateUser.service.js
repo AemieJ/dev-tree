@@ -1,10 +1,10 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import dotenv from 'dotenv'
 
-import { errorName } from '../../errors/constants.js';
-import verification from '../../middleware/verify.js';
-import models from '../../models/index.js';
-import validation from '../../validations/index.js';
+import { errorName } from '../../errors/constants.js'
+import verification from '../../middleware/verify.js'
+import models from '../../models/index.js'
+import validation from '../../validations/index.js'
+dotenv.config()
 
 const updateUser = async (email, req, accessToken) => {
   const { error } = validation.updateValidation(req)
@@ -38,4 +38,4 @@ const updateUser = async (email, req, accessToken) => {
   }
 }
 
-export default updateUser;
+export default updateUser

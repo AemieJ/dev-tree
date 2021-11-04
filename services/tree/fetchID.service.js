@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import dotenv from 'dotenv'
 
-import { errorName } from '../../errors/constants.js';
-import models from '../../models/index.js';
+import { errorName } from '../../errors/constants.js'
+import models from '../../models/index.js'
+dotenv.config()
 
 const fetchID = async (email) => {
   const personal = await models.Personal.findOne({ email })
@@ -22,4 +22,4 @@ const fetchID = async (email) => {
   }
 }
 
-export default fetchID;
+export default fetchID

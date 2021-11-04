@@ -1,13 +1,13 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import { graphqlHTTP as expressGraphQL } from 'express-graphql';
-import schema from './schema/index.js';
-import getErrorCode from './errors/getCode.js';
+import express from 'express'
+import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+import { graphqlHTTP as expressGraphQL } from 'express-graphql'
+import schema from './schema/index.js'
+import getErrorCode from './errors/getCode.js'
 
 // const { register, login, update, forgotPassword, isValidPassURL,
 // resetPassword, registerID } = require("./resolvers/index")
-import resolver from './resolvers/index.js';
+import resolver from './resolvers/index.js'
 
 const app = express()
 dotenv.config()
@@ -32,4 +32,4 @@ app.get('/', (req, res) => {
   res.status(200).json({ msg: 'Hey there' })
 })
 
-export default app;
+export default app

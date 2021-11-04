@@ -10,4 +10,4 @@ type BookMarks {
 }
 `
 
-export default bookMarkObj;
+export default bookMarkObj

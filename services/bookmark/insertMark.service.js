@@ -1,17 +1,15 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
+
+import { errorName } from '../../errors/constants.js'
+import models from '../../models/index.js'
+import middle from '../../middleware/index.js'
 dotenv.config()
 
-import { errorName } from '../../errors/constants.js';
-import models from '../../models/index.js';
-import middle from '../../middleware/index.js';
-
-
 const insertBookmarks = async (userEmail, email, accessToken) => {
-
   const value = await middle.verification(accessToken, userEmail)
   const token = value.token
-  
-  if (token === "") {
+
+  if (token === '') {
     if (userEmail === email) throw new Error(errorName.DUP_EMAIL)
     const user = await models.User.findOne({ email: userEmail })
     if (!user) throw new Error(errorName.USER_NOT_EXISTS)
@@ -30,21 +28,21 @@ const insertBookmarks = async (userEmail, email, accessToken) => {
     }
 
     return {
-        msg: {
-          status: 201,
-          bookmarks: bookmarks,
-          accessToken: { token: '', expires: 0 }
-        }
+      msg: {
+        status: 201,
+        bookmarks: bookmarks,
+        accessToken: { token: '', expires: 0 }
       }
+    }
   } else {
     return {
-        msg: {
-          status: 403,
-          bookmarks: [],
-          accessToken: token.accessToken
-        }
+      msg: {
+        status: 403,
+        bookmarks: [],
+        accessToken: token.accessToken
       }
+    }
   }
 }
 
-export default insertBookmarks;
+export default insertBookmarks

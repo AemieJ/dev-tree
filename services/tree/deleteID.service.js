@@ -1,12 +1,11 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
+
+import { errorName } from '../../errors/constants.js'
+import middle from '../../middleware/index.js'
+import models from '../../models/index.js'
 dotenv.config()
 
-import { errorName } from '../../errors/constants.js';
-import middle from '../../middleware/index.js';
-import models from '../../models/index.js';
-
 const deleteID = async (email, acc, accessToken) => {
-
   const value = await middle.verification(accessToken, email)
   const token = value.token
   if (token === '') {
@@ -15,26 +14,26 @@ const deleteID = async (email, acc, accessToken) => {
 
     if (acc === 'youtube') {
       if (personal.youtube.id === '') throw new Error(errorName.ID_NOT_EXISTS)
-      personal.youtube = undefined;
+      personal.youtube = undefined
     }
 
     try {
-      await personal.save();
+      await personal.save()
     } catch (err) {
       throw new Error(errorName.SERVER_ERROR)
     }
 
     return {
       msg: {
-        message: "Deletion has been done",
-        status: 200, 
+        message: 'Deletion has been done',
+        status: 200,
         accessToken: { token: '', expires: 0 }
       }
     }
   } else {
     return {
       msg: {
-        message: "Access token expired", 
+        message: 'Access token expired',
         status: 403,
         accessToken: token.accessToken
       }
@@ -42,4 +41,4 @@ const deleteID = async (email, acc, accessToken) => {
   }
 }
 
-export default deleteID;
+export default deleteID

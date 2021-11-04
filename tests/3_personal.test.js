@@ -1,40 +1,40 @@
 import chai from 'chai'
 import chaiGraphQL from 'chai-graphql'
-import supertest from "supertest"
-import app from "../index.js"
+import supertest from 'supertest'
+import app from '../index.js'
 
 chai.use(chaiGraphQL)
-let assert = chai.assert
-let request = supertest(app)
-let accessToken = "", isFirstTimeLogin = false
+const assert = chai.assert
+const request = supertest(app)
+let accessToken = ''; let isFirstTimeLogin = false
 
 const convertObjToString = (obj) => {
-  let stringify = Object
+  const stringify = Object
     .entries(obj)
     .reduce((a, e) => {
-      if (typeof e[1] != "function" && Array.isArray(e[1]) === false) {
-        a += `${e[0]} : "${e[1]}", `;
-      } 
-      
+      if (typeof e[1] !== 'function' && Array.isArray(e[1]) === false) {
+        a += `${e[0]} : "${e[1]}", `
+      }
+
       if (Array.isArray(e[1])) {
         a += `${e[0]} : ${JSON.stringify(e[1])}`
       }
-      return a;
-    }, "`{")
-    .slice(1, -2) + "}"
+      return a
+    }, '`{')
+    .slice(1, -2) + '}'
   return stringify
 }
 
 describe('🚀 Tree View user ID section methods', () => {
   it('Logins a user', (done) => {
     let body = {
-      email: "temp.user1@gmail.com",
-      password: "Test#123"
-    };
+      email: 'temp.user1@gmail.com',
+      password: 'Test#123'
+    }
 
     body = convertObjToString(body)
 
-    let query = `
+    const query = `
         mutation {
             loginUser(body: ${body}) {
               status
@@ -57,9 +57,9 @@ describe('🚀 Tree View user ID section methods', () => {
       .send({ query })
       .end((err, res) => {
         if (err) return done(err)
-        let data = res.body.data.loginUser
+        const data = res.body.data.loginUser
         assert.deepEqual(data.status, 200)
-        let token = data.msg
+        const token = data.msg
         accessToken = token.accessToken.token
         assert.isObject(token.accessToken)
         assert.isObject(token.refreshToken)
@@ -84,7 +84,7 @@ describe('🚀 Tree View user ID section methods', () => {
       .send({ query })
       .end((err, res) => {
         if (err) return done(err)
-        let data = res.body.data.user
+        const data = res.body.data.user
         assert.deepEqual(data.status, 200, 'Data is successful')
         isFirstTimeLogin = data.isFirstTimeLogin
         done()
@@ -92,9 +92,9 @@ describe('🚀 Tree View user ID section methods', () => {
   })
 
   it('Fetch personal ID Detail', (done) => {
-    let email = "kshitij.suri@gmail.com";
+    const email = 'kshitij.suri@gmail.com'
 
-    let query = `
+    const query = `
       query {
         personal(email: "${email}") {
           status
@@ -112,22 +112,21 @@ describe('🚀 Tree View user ID section methods', () => {
       .send({ query })
       .end((err, res) => {
         if (err) return done(err)
-        let data = res.body.data.personal
+        const data = res.body.data.personal
         assert.deepEqual(data.status, 200)
         assert.isObject(data.id)
         done()
       })
-
   })
 
   it('Register a personal ID', (done) => {
-    let email = "temp.user1@gmail.com";
-    let body = `{
+    const email = 'temp.user1@gmail.com'
+    const body = `{
       youtubeID: "https://www.youtube.com/channel/UCs6QxQabcPLfg7CVFWfAeLg",
       youtubeList: []
-    }`;
+    }`
 
-    let query = `
+    const query = `
     mutation {
       insertPersonalID(email: "${email}", body: ${body}, accessToken: "${accessToken}") {
         status
@@ -145,27 +144,26 @@ describe('🚀 Tree View user ID section methods', () => {
 
     if (isFirstTimeLogin) {
       request.post('/graphql')
-      .send({ query })
-      .end((err, res) => {
-        if (err) return done(err)
-        let data = res.body.data.insertPersonalID
-        assert.deepEqual(data.status, 201)
-        assert.isObject(data.id)
-        done()
-      })
+        .send({ query })
+        .end((err, res) => {
+          if (err) return done(err)
+          const data = res.body.data.insertPersonalID
+          assert.deepEqual(data.status, 201)
+          assert.isObject(data.id)
+          done()
+        })
     } else {
       done()
     }
-
   })
 
   it('Updating an ID list', (done) => {
-    let email = "temp.user1@gmail.com";
-    let body = `{
+    const email = 'temp.user1@gmail.com'
+    const body = `{
       youtubeList: ["https://www.youtube.com/watch?v=_-FUYcP5ghw"]
-    }`;
+    }`
 
-    let query = `
+    const query = `
     mutation {
       updatePersonalID(email: "${email}", body: ${body}, accessToken: "${accessToken}") {
         status
@@ -182,25 +180,25 @@ describe('🚀 Tree View user ID section methods', () => {
     }`
 
     request.post('/graphql')
-    .send({ query })
-    .end((err, res) => {
-      if (err) return done(err)
-      let data = res.body.data.updatePersonalID
-      assert.deepEqual(data.status, 200)
-      let youtubeID = data.id.youtube.id
-      let list = data.id.youtube.list
-      assert.deepEqual(youtubeID, "https://www.youtube.com/channel/UCs6QxQabcPLfg7CVFWfAeLg")
-      assert.lengthOf(list, 1)
+      .send({ query })
+      .end((err, res) => {
+        if (err) return done(err)
+        const data = res.body.data.updatePersonalID
+        assert.deepEqual(data.status, 200)
+        const youtubeID = data.id.youtube.id
+        const list = data.id.youtube.list
+        assert.deepEqual(youtubeID, 'https://www.youtube.com/channel/UCs6QxQabcPLfg7CVFWfAeLg')
+        assert.lengthOf(list, 1)
 
-      done()
-    })
+        done()
+      })
   })
 
   it('Deleting an ID', (done) => {
-    let email = "temp.user1@gmail.com";
-    let acc = "youtube";
+    const email = 'temp.user1@gmail.com'
+    const acc = 'youtube'
 
-    let query = `
+    const query = `
     mutation {
       deletePersonalID(email: "${email}", acc: "${acc}", accessToken: "${accessToken}") {
         status
@@ -208,24 +206,24 @@ describe('🚀 Tree View user ID section methods', () => {
     }`
 
     request.post('/graphql')
-    .send({ query })
-    .end((err, res) => {
-      if (err) return done(err)
-      let data = res.body.data.deletePersonalID
-      assert.deepEqual(data.status, 200)
-      done()
-    })
+      .send({ query })
+      .end((err, res) => {
+        if (err) return done(err)
+        const data = res.body.data.deletePersonalID
+        assert.deepEqual(data.status, 200)
+        done()
+      })
   })
 
   it('Inserting a new ID', (done) => {
-    let email = "temp.user1@gmail.com";
-    let body = `{
+    const email = 'temp.user1@gmail.com'
+    const body = `{
       id: "https://www.youtube.com/channel/UCs6QxQabcPLfg7CVFWfAeLg",
       list: ["https://www.youtube.com/watch?v=_-FUYcP5ghw"],
       account: "youtube"
-    }`;
+    }`
 
-    let query = `
+    const query = `
     mutation {
       addPersonalID(email: "${email}", body: ${body}, accessToken: "${accessToken}") {
         status
@@ -240,12 +238,12 @@ describe('🚀 Tree View user ID section methods', () => {
     `
 
     request.post('/graphql')
-    .send({ query })
-    .end((err, res) => {
-      if (err) return done(err)
-      let data = res.body.data.addPersonalID
-      assert.deepEqual(data.status, 200)
-      done()
-    })
+      .send({ query })
+      .end((err, res) => {
+        if (err) return done(err)
+        const data = res.body.data.addPersonalID
+        assert.deepEqual(data.status, 200)
+        done()
+      })
   })
 })

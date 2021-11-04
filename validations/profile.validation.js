@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi';
+import Joi from '@hapi/joi'
 
 export const updateValidation = (data) => {
   const schema = Joi.object({
@@ -8,4 +8,3 @@ export const updateValidation = (data) => {
   })
   return schema.validate(data)
 }
-
