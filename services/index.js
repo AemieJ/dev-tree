@@ -19,6 +19,8 @@ import fetchBookMarks from './bookmark/fetchMark.service.js'
 import insertBookMarks from './bookmark/insertMark.service.js'
 import removeBookMarks from './bookmark/removeMark.service.js'
 
+import insertMail from './subscriber/insertMail.service.js'
+
 const service = {
   createUser,
   createToken,
@@ -37,7 +39,8 @@ const service = {
   deleteID,
   fetchBookMarks,
   removeBookMarks,
-  insertBookMarks
+  insertBookMarks,
+  insertMail
 }
 
 export default service

@@ -2,6 +2,7 @@ import { register, login } from './auth.controller.js'
 import { update, forgotPassword, isValidPassURL, resetPassword, fetch, fetchAll } from './profile.controller.js'
 import { registerID, fetchPersonalID, approveID, updatePersonalDetails, insertID, deleteID } from './id.controller.js'
 import { getBookmarks, insertBookMark, removeBookMark } from './bookmark.controller.js'
+import { insertEmail } from './subscriber.controller.js'
 
 const resolver = {
   user: fetch,
@@ -21,6 +22,7 @@ const resolver = {
   bookmarks: getBookmarks,
   insertBookmark: insertBookMark,
   removeBookmark: removeBookMark,
+  insertSubscriber: insertEmail,
   greeter: ({ name }) => { return `Hello, ${name}.` }
 }
 
