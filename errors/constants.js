@@ -34,7 +34,7 @@ export const errorType = {
     statusCode: 403
   },
   USER_ALREADY_EXISTS: {
-    message: 'User already exists. Login with the credentials',
+    message: 'User already exists.',
     statusCode: 403
   },
   ID_NOT_EXISTS: {

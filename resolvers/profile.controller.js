@@ -5,8 +5,13 @@ export const fetch = async ({ email }) => {
   return value.msg
 }
 
-export const fetchAll = async () => {
-  const value = await service.fetchAll()
+export const fetchAll = async ({ page }) => {
+  const value = await service.fetchAll(page)
+  return value.msg
+}
+
+export const totalUsers = async() => {
+  const value = await service.totalUsers()
   return value.msg
 }
 
