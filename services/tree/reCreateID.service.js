@@ -14,14 +14,24 @@ const reCreateID = async (email, body, accessToken, acc) => {
   const token = value.token
   if (token === '') {
     const checkUserExists = await models.Personal.findOne({ email })
-    if (!checkUserExists) throw new Error(errorName.ID_NOT_EXISTS)
 
-    if (acc === 'youtube') {
+    if (acc === 'youtube' && checkUserExists) {
       if (checkUserExists.youtube.id !== '') throw new Error(errorName.NOT_ACC_DELETE)
     }
 
     try {
-      await models.Personal.updateOne({ email }, body)
+      if (checkUserExists) {
+        await models.Personal.updateOne({ email }, body)
+      } else {
+        const yt = {
+            id: body.youtube.id,
+            list: body.youtube.list 
+        }
+  
+        const newID = new models.Personal({
+          email: email, youtube: yt})
+        await newID.save()
+      }
     } catch (err) {
       throw new Error(errorName.SERVER_ERROR)
     }

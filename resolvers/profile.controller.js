@@ -10,6 +10,11 @@ export const fetchAll = async ({ page }) => {
   return value.msg
 }
 
+export const searchUser = async({ query, attr, page }) => {
+  const value = await service.searchUser(query, attr, page)
+  return value.msg
+}
+
 export const totalUsers = async() => {
   const value = await service.totalUsers()
   return value.msg

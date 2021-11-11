@@ -9,6 +9,7 @@ import resetPass from './users/resetPass.service.js'
 import fetchDetails from './users/fetchDetails.service.js'
 import fetchAll from './users/fetchAll.service.js'
 import totalUsers from './users/totalUsers.service.js'
+import searchUser from './users/searchUser.service.js'
 
 import createID from './tree/createID.service.js'
 import fetchID from './tree/fetchID.service.js'
@@ -29,6 +30,7 @@ const service = {
   fetchDetails,
   fetchAll,
   totalUsers,
+  searchUser,
   updateUser,
   updateUserOnLogin,
   forgotPass,

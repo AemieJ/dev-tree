@@ -6,7 +6,9 @@ dotenv.config()
 
 const fetchID = async (email) => {
   const personal = await models.Personal.findOne({ email })
-  if (!personal) throw new Error(errorName.ID_NOT_EXIST)
+  if (!personal) {
+    throw new Error(errorName.ID_NOT_EXISTS)
+  }
 
   const yt = personal.youtube
   const req = {

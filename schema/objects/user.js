@@ -73,6 +73,12 @@ type UsersObj {
 type Users {
     status: Int!
     users: [UsersObj!]
+},
+
+type SearchUsers {
+    status: Int!
+    users: [UsersObj!]
+    pages: Int!
 }`
 
 export default userObj
