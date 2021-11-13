@@ -16,7 +16,7 @@ const sendMailForPass = async (receiver, refreshToken) => {
     }
   })
 
-  const uri = `http://localhost:3000/reset_password/${refreshToken}/${receiver}` // TODO: Will be changed later on further development of application
+  const uri = `https://dev-tree-client.vercel.app/reset_password/${refreshToken}/${receiver}` // TODO: Will be changed later on further development of application
   const message = {
     from: 'bginger436@gmail.com',
     to: receiver,
