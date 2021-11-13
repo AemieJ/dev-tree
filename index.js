@@ -25,7 +25,6 @@ const schema = buildSchema(schemaStr)
 app.use('/graphql', expressGraphQL({
   schema: schema,
   rootValue: root,
-  graphiql: true,
   customFormatErrorFn: (err) => ({
     message: getErrorCode(err.message)
   })
@@ -38,4 +37,5 @@ app.get('/', (req, res) => {
 const expressPlayground = playground.default
 app.get("/playground", expressPlayground({ endpoint: "/graphql" }))
 
-export default app
+const PORT = 4000 || process.env.PORT
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
