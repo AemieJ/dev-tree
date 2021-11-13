@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "format": "standard --fix",
     "convert": "cjs-to-es6 test.js",
     "test": "mocha tests/*.js --timeout 15000",
