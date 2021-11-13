@@ -2,8 +2,9 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import { graphqlHTTP as expressGraphQL } from 'express-graphql'
-import schema from './schema/index.js'
+import schemaStr from './schema/index.js'
 import getErrorCode from './errors/getCode.js'
+import { buildSchema } from 'graphql'
 
 // const { register, login, update, forgotPassword, isValidPassURL,
 // resetPassword, registerID } = require("./resolvers/index")
@@ -18,6 +19,7 @@ mongoose.connect(process.env.DB_CONNECT, {
 }, () => console.log('Connected to mongodb'))
 
 const root = resolver
+const schema = buildSchema(schemaStr)
 
 app.use('/graphql', expressGraphQL({
   schema: schema,
