@@ -1,7 +1,7 @@
 import chai from 'chai'
 import chaiGraphQL from 'chai-graphql'
 import supertest from 'supertest'
-import app from '../index.js'
+import app from '../server.js'
 
 chai.use(chaiGraphQL)
 const assert = chai.assert
@@ -22,9 +22,9 @@ const convertObjToString = (obj) => {
 }
 
 describe('🚀 User section methods', () => {
-  it('Fetch all users', (done) => {
+  it('Fetch all users of page 0', (done) => {
     const query = `query {
-            users {
+            users (page: 0) {
               status
               users {
                 name
@@ -127,16 +127,12 @@ describe('🚀 User section methods', () => {
   })
 
   it('Logins a user', (done) => {
-    let body = {
-      email: 'aemie.j@gmail.com',
-      password: 'Testing#15'
-    }
-
-    body = convertObjToString(body)
-
     const query = `
         mutation {
-            loginUser(body: ${body}) {
+            loginUser(body: {
+              email: "aemie.j@gmail.com",
+              password: "Testing#15"
+            }) {
               status
               msg {
                 accessToken {
@@ -168,15 +164,12 @@ describe('🚀 User section methods', () => {
 
   it('Update user information', (done) => {
     const email = 'aemie.j@gmail.com'
-    let body = {
-      name: 'Aemie H Jariwala'
-    }
-
-    body = convertObjToString(body)
 
     const query = `
         mutation {
-            updateUserInfo(email: "${email}", body: ${body}, accessToken: "${accessToken}") {
+            updateUserInfo(email: "${email}", body: {
+              name: "Aemie H Jariwala"
+            }, accessToken: "${accessToken}") {
                 status
                 update {
                   name

@@ -1,7 +1,7 @@
 import chai from 'chai'
 import chaiGraphQL from 'chai-graphql'
 import supertest from 'supertest'
-import app from '../index.js'
+import app from '../server.js'
 
 chai.use(chaiGraphQL)
 const assert = chai.assert
