@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import { graphqlHTTP as expressGraphQL } from 'express-graphql'
+import playground from 'graphql-playground-middleware-express'
 import schemaStr from './schema/index.js'
 import getErrorCode from './errors/getCode.js'
 import { buildSchema } from 'graphql'
@@ -33,5 +34,8 @@ app.use('/graphql', expressGraphQL({
 app.get('/', (req, res) => {
   res.status(200).json({ msg: 'Hey there' })
 })
+
+const expressPlayground = playground.default
+app.get("/playground", expressPlayground({ endpoint: "/graphql" }))
 
 export default app
